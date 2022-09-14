@@ -27,7 +27,10 @@ class UserController {
         });
         const userByEmail = await new UserDao().getUserByEmail(trx, email);
         res.status(SUCCESS).json({
-          user: userByEmail,
+          user: {
+            id: userByEmail.id,
+            email: userByEmail.email,
+          },
         });
         return;
       });

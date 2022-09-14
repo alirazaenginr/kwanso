@@ -4,10 +4,6 @@ import UserModel from "./UserModel";
 class UserDao {
   getUserByEmail = async (trx: Knex.Transaction, email: string): Promise<UserModel> => 
     await trx(UserModel.TABLE_NAME)
-      .select(
-        UserModel.col("id"),
-        UserModel.col("email"),
-      )
       .where(UserModel.col("email"), email)
       .first();
   
