@@ -4,9 +4,6 @@ import {
   ErrorType, 
   MessageType, 
 } from "../../shared/types/type";
-import { 
-  v4 as uuidv4,
-} from "uuid";
 import { ENV } from "../../shared/enums/Enum";
 import helmet, { HelmetOptions } from "helmet";
 
@@ -39,8 +36,6 @@ class Utilities {
     }
     return true;
   }
-
-  static generateUUID = (): string => uuidv4();
 
   static SecurityLayer = (options?: HelmetOptions) => options ? helmet(options) : helmet();
 
