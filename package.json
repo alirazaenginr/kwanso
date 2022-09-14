@@ -1,0 +1,44 @@
+{
+  "name": "kwanso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "tsc && node dist/server.js",
+    "dev": "set NODE_ENV=development&& nodemon src/server.ts",
+    "prod": "tsc && set NODE_ENV=production&& node dist/server.js",
+    "db-migrate": "tsc && npx knex migrate:latest --knexfile dist/knexfile.js",
+    "db-rollBack": "npx knex migrate:rollback --knexfile dist/knexfile.js",
+    "db-seed": "npx knex seed:run --knexfile dist/knexfile.js",
+    "db-fresh": "npm run db-rollBack && npm run db-migrate && npm run db-seed",
+    "windows-fresh-project-dev": "npm run windows-remove-dist && tsc && npm run db-fresh && npm run dev",
+    "windows-fresh-project-prod": "npm run windows-remove-dist && tsc && npm run db-fresh && npm run prod",
+    "windows-remove-dist": "IF EXIST dist RMDIR /S /Q dist"
+  },
+  "author": "Ali Raza <alirazaenginr@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.12",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^2.3.0",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.8",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.7.16",
+    "@types/uuid": "^8.3.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  }
+}
